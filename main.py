@@ -12,7 +12,6 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 app.config['SECRET_KEY'] = 'home_str'
 
-
 @login_manager.user_loader
 def load_user(user_id):
     db_sess = db_session.create_session()
@@ -21,7 +20,9 @@ def load_user(user_id):
 @app.route('/news/<id>/more_detailed')
 @login_required
 def more_detailed(id):
-    return render_template('more_detailed.html')
+    db_sess = db_session.create_session()
+    user = db_sess.query(News).filter(News.id == id).all()
+    return render_template('more_detailed.html', n=user)
 
 
 @app.route('/logout')
