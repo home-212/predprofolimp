@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>Добавление позиции</h1>
-    <form action="" method="post">
+    <form action="" method="post" enctype=multipart/form-data>
         {{ form.hidden_tag() }}
         <p>
             {{ form.title.label }}<br>
@@ -22,7 +22,8 @@
                 </p>
             {% endfor %}
         </p>
-        <p>{{ form.is_private() }} {{ form.is_private.label }}</p>
+        <label>Выберите изображение:</label>
+        <input type="file" name="file" accept="image/png, image/jpeg, image/jpg" />
         <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
         {{ message }}
     </form>

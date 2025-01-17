@@ -1,7 +1,8 @@
-from flask import Flask, render_template, redirect, request, abort
+from flask import Flask, render_template, redirect, request, abort, send_file
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+from io import BytesIO
 
-from forms.inventory import NewsForm
+from forms.inventory import InventoryForm
 from forms.user import RegisterForm, LoginForm
 from data.inventory import Inventory
 from data.users import User
@@ -40,13 +41,16 @@ def main():
 @app.route('/inventory', methods=['GET', 'POST'])
 @login_required
 def add_news():
-    form = NewsForm()
+    form = InventoryForm()
     if form.validate_on_submit():
+        if request.method == 'POST':
+            file = request.files['file']
         db_sess = db_session.create_session()
         inventory = Inventory()
         inventory.title = form.title.data
         inventory.content = form.content.data
         inventory.is_rented = form.is_private.data
+        inventory.image = file.filename
         current_user.inventory.append(inventory)
         db_sess.merge(current_user)
         db_sess.commit()
@@ -70,7 +74,7 @@ def news_delete(id):
 @app.route('/inventory/<int:id>', methods=['GET', 'POST'])
 @login_required
 def edit_news(id):
-    form = NewsForm()
+    form = InventoryForm()
     if request.method == "GET":
         db_sess = db_session.create_session()
         news = db_sess.query(Inventory).filter(Inventory.id == id, Inventory.user == current_user).first()
