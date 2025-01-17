@@ -1,9 +1,9 @@
 from flask import Flask, render_template, redirect, request, abort
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 
-from forms.news import NewsForm
+from forms.inventory import NewsForm
 from forms.user import RegisterForm, LoginForm
-from data.news import News
+from data.inventory import Inventory
 from data.users import User
 from data import db_session
 
@@ -17,11 +17,11 @@ def load_user(user_id):
     db_sess = db_session.create_session()
     return db_sess.query(User).get(user_id)
 
-@app.route('/news/<id>/more_detailed')
+@app.route('/inventory/<id>/more_detailed')
 @login_required
 def more_detailed(id):
     db_sess = db_session.create_session()
-    user = db_sess.query(News).filter(News.id == id).all()
+    user = db_sess.query(Inventory).filter(Inventory.id == id).all()
     return render_template('more_detailed.html', n=user)
 
 
@@ -37,28 +37,28 @@ def main():
     app.run()
 
 
-@app.route('/news', methods=['GET', 'POST'])
+@app.route('/inventory', methods=['GET', 'POST'])
 @login_required
 def add_news():
     form = NewsForm()
     if form.validate_on_submit():
         db_sess = db_session.create_session()
-        news = News()
-        news.title = form.title.data
-        news.content = form.content.data
-        news.is_private = form.is_private.data
-        current_user.news.append(news)
+        inventory = Inventory()
+        inventory.title = form.title.data
+        inventory.content = form.content.data
+        inventory.is_rented = form.is_private.data
+        current_user.inventory.append(inventory)
         db_sess.merge(current_user)
         db_sess.commit()
         return redirect('/index')
-    return render_template('news.html', title='Добавление новости', form=form)
+    return render_template('inventory.html', title='Добавление позиции', form=form)
 
 
 @app.route('/news_delete/<int:id>', methods=['GET', 'POST'])
 @login_required
 def news_delete(id):
     db_sess = db_session.create_session()
-    news = db_sess.query(News).filter(News.id == id, News.user == current_user).first()
+    news = db_sess.query(Inventory).filter(Inventory.id == id, Inventory.user == current_user).first()
     if news:
         db_sess.delete(news)
         db_sess.commit()
@@ -67,41 +67,41 @@ def news_delete(id):
     return redirect('/index')
 
 
-@app.route('/news/<int:id>', methods=['GET', 'POST'])
+@app.route('/inventory/<int:id>', methods=['GET', 'POST'])
 @login_required
 def edit_news(id):
     form = NewsForm()
     if request.method == "GET":
         db_sess = db_session.create_session()
-        news = db_sess.query(News).filter(News.id == id, News.user == current_user).first()
+        news = db_sess.query(Inventory).filter(Inventory.id == id, Inventory.user == current_user).first()
         if news:
             form.title.data = news.title
             form.content.data = news.content
-            form.is_private.data = news.is_private
+            form.is_private.data = news.is_rented
         else:
             abort(404)
     if form.validate_on_submit():
         db_sess = db_session.create_session()
-        news = db_sess.query(News).filter(News.id == id, News.user == current_user).first()
+        news = db_sess.query(Inventory).filter(Inventory.id == id, Inventory.user == current_user).first()
         if news:
             news.title = form.title.data
             news.content = form.content.data
-            news.is_private = form.is_private.data
+            news.is_rented = form.is_private.data
             db_sess.commit()
             return redirect('/index')
         else:
             abort(404)
-    return render_template('news.html', title='Редактирование новости', form=form)
+    return render_template('inventory.html', title='Редактирование новости', form=form)
 
 
 @app.route("/index")
 def index():
     db_sess = db_session.create_session()
     if current_user.is_authenticated:
-        news = db_sess.query(News).filter((News.user == current_user) | (News.is_private != True))
+        news = db_sess.query(Inventory).filter((Inventory.user == current_user) | (Inventory.is_rented != False))
     else:
-        news = db_sess.query(News).filter(News.is_private != True)
-    return render_template("index.html", news=news)
+        news = db_sess.query(Inventory).filter(Inventory.is_rented != False)
+    return render_template("index.html", inventory=news)
 
 
 @app.route('/reqister', methods=['GET', 'POST'])

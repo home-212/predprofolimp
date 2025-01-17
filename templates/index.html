@@ -4,20 +4,20 @@
 {% if current_user.is_authenticated %}
     <h1>Каталог</h1>
     {% if current_user.admin == 'True' %}
-        <a href="news" class="btn btn-secondary">Добавить Позицию</a>
+        <a href="inventory" class="btn btn-secondary">Добавить Позицию</a>
     {% endif %}
 <div class="row">
-    {% for item in news %}
+    {% for item in inventory %}
         <div class="col-md-3 m-1 p-1 border rounded">
             <h2>{{ item.title }}</h2>
             {% if current_user.admin == 'True' %}
                 <div class="m-1">
-                    <a href="/news/{{ item.id }}" class="btn btn-warning">Изменить</a>
+                    <a href="/inventory/{{ item.id }}" class="btn btn-warning">Изменить</a>
                     <a href="/news_delete/{{ item.id }}" class="btn btn-danger">Удалить</a>
                 </div>
             {% endif %}
             <div class="m-1">
-                <a href="/news/{{ item.id }}/more_detailed" class="btn btn-warning">Подробнее</a>
+                <a href="/inventory/{{ item.id }}/more_detailed" class="btn btn-warning">Подробнее</a>
             </div>
         </div>
     {% endfor %}
