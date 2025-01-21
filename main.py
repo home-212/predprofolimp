@@ -16,7 +16,7 @@ app.config['SECRET_KEY'] = 'home_str'
 @login_manager.user_loader
 def load_user(user_id):
     db_sess = db_session.create_session()
-    return db_sess.query(User).get(user_id)
+    return db_sess.get(User, user_id)   # !!!!
 
 @app.route('/inventory/<id>/more_detailed')
 @login_required
@@ -102,9 +102,9 @@ def edit_news(id):
 def index():
     db_sess = db_session.create_session()
     if current_user.is_authenticated:
-        news = db_sess.query(Inventory).filter((Inventory.user == current_user) | (Inventory.is_rented != False))
+        news = db_sess.query(Inventory).filter(Inventory.is_rented == False).all()
     else:
-        news = db_sess.query(Inventory).filter(Inventory.is_rented != False)
+        news = db_sess.query(Inventory).filter(Inventory.is_rented == False)
     return render_template("index.html", inventory=news)
 
 
