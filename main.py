@@ -37,6 +37,13 @@ def arend(id):
 def end(id):
     return redirect('/index')
 
+
+@app.route('/request')
+@login_required
+def request():
+    return render_template('request.html')
+
+
 @app.route('/logout')
 @login_required
 def logout():
