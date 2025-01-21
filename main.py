@@ -38,10 +38,10 @@ def end(id):
     return redirect('/index')
 
 
-@app.route('/request')
+@app.route('/req')
 @login_required
-def request():
-    return render_template('request.html')
+def req():
+    return render_template('req.html')
 
 
 @app.route('/logout')
