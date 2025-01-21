@@ -23,14 +23,25 @@ def load_user(user_id):
 def more_detailed(id):
     db_sess = db_session.create_session()
     user = db_sess.query(Inventory).filter(Inventory.id == id).all()
-    return render_template('more_detailed.html', n=user)
+    return render_template('more_detailed.html', n=user, id=id)
 
+
+@app.route('/inventory/<id>/more_detailed/arend')
+@login_required
+def arend(id):
+    return redirect('/index')
+
+
+@app.route('/inventory/<id>/more_detailed/end')
+@login_required
+def end(id):
+    return redirect('/index')
 
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
-    return redirect("/index")
+    return redirect("/reqister")
 
 
 def main():
@@ -102,10 +113,11 @@ def edit_news(id):
 def index():
     db_sess = db_session.create_session()
     if current_user.is_authenticated:
+        arend = db_sess.query(Inventory).filter(Inventory.user_id == current_user.id).all()
         news = db_sess.query(Inventory).filter(Inventory.is_rented == False).all()
     else:
         news = db_sess.query(Inventory).filter(Inventory.is_rented == False)
-    return render_template("index.html", inventory=news)
+    return render_template("index.html", inventory=news, arend=arend)
 
 
 @app.route('/reqister', methods=['GET', 'POST'])

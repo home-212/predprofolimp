@@ -6,6 +6,17 @@
     {% if current_user.admin == 'True' %}
         <a href="inventory" class="btn btn-secondary">Добавить Позицию</a>
     {% endif %}
+<div>
+<div class="row">
+    {% for item in arend %}
+        <div class="col-md-3 m-1 p-1 border rounded">
+            <h2>{{ item.title }}</h2>
+            <div class="m-1">
+                <a href="/inventory/{{ item.id }}/more_detailed" class="btn btn-warning">Подробнее</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 <div class="row">
     {% for item in inventory %}
         <div class="col-md-3 m-1 p-1 border rounded">
