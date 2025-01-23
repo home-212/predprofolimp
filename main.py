@@ -1,5 +1,6 @@
-from flask import Flask, render_template, redirect, request, abort
+from flask import Flask, render_template, redirect, request, abort, send_file
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+from io import BytesIO
 
 from forms.inventory import InventoryForm
 from forms.user import RegisterForm, LoginForm
@@ -17,30 +18,32 @@ def load_user(user_id):
     db_sess = db_session.create_session()
     return db_sess.get(User, user_id)   # !!!!
 
-@app.route('/inventory/<id>/more_detailed')
+@app.route('/inventory/<object_id>/more_detailed')
 @login_required
-def more_detailed(id):
+def more_detailed(object_id):
     db_sess = db_session.create_session()
     user = db_sess.query(Inventory).filter(Inventory.id == id).all()
-    return render_template('more_detailed.html', n=user, id=id)
+    return render_template('more_detailed.html', n=user, id=object_id)
 
 
-@app.route('/inventory/<id>/more_detailed/arend')
+@app.route('/inventory/<object_id>/more_detailed/arend')
 @login_required
-def arend(id):
+def arend(object_id):
     return redirect('/index')
 
 
-@app.route('/inventory/<id>/more_detailed/end')
+@app.route('/inventory/<object_id>/more_detailed/end')
 @login_required
-def end(id):
+def end(object_id):
     return redirect('/index')
 
 
 @app.route('/req')
 @login_required
 def req():
-    return render_template('req.html')
+    db_sess = db_session.create_session()
+    object = db_sess.query(User).all()
+    return render_template('req.html', o=object)
 
 
 @app.route('/logout')
