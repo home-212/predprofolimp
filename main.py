@@ -1,6 +1,5 @@
-from flask import Flask, render_template, redirect, request, abort, send_file
+from flask import Flask, render_template, redirect, request, abort
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
-from io import BytesIO
 
 from forms.inventory import InventoryForm
 from forms.user import RegisterForm, LoginForm
@@ -38,10 +37,10 @@ def end(id):
     return redirect('/index')
 
 
-@app.route('/request')
+@app.route('/req')
 @login_required
-def request():
-    return render_template('request.html')
+def req():
+    return render_template('req.html')
 
 
 @app.route('/logout')
@@ -141,7 +140,7 @@ def reqister():
         user = User(
             name=form.name.data,
             email=form.email.data,
-            about=form.about.data
+            number=form.number.data
         )
         user.admin = 'False'
         user.set_password(form.password.data)

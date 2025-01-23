@@ -5,9 +5,10 @@
     <h1>Каталог</h1>
     {% if current_user.admin == 'True' %}
         <a href="inventory" class="btn btn-secondary">Добавить Позицию</a>
-        <a href="/request" class="btn btn-secondary">Запросы</a>
+        <a href="/req" class="btn btn-secondary">Запросы</a>
     {% endif %}
 <div>
+{% if current_user.admin != 'True' %}
 <div class="row">
     {% for item in arend %}
         <div class="col-md-3 m-1 p-1 border rounded">
@@ -18,6 +19,7 @@
         </div>
     {% endfor %}
 </div>
+{% endif %}
 <div class="row">
     {% for item in inventory %}
         <div class="col-md-3 m-1 p-1 border rounded">
