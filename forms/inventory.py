@@ -9,3 +9,4 @@ class InventoryForm(FlaskForm):
     is_private = BooleanField("Личное")
     image = StringField('Вфбывфцвыфв')
     submit = SubmitField('Применить')
+
