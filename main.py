@@ -22,7 +22,7 @@ def load_user(user_id):
 @login_required
 def more_detailed(object_id):
     db_sess = db_session.create_session()
-    user = db_sess.query(Inventory).filter(Inventory.id == id).all()
+    user = db_sess.query(Inventory).filter(Inventory.id == object_id).all()
     return render_template('more_detailed.html', n=user, id=object_id)
 
 
