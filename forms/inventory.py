@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired
 class InventoryForm(FlaskForm):
     title = StringField('Заголовок', validators=[DataRequired()])
     content = TextAreaField("Содержание")
-    is_private = BooleanField("Личное")
-    image = StringField('Вфбывфцвыфв')
+    is_rented = BooleanField("Личное")
+    image = StringField('Изображение')
     submit = SubmitField('Применить')
 

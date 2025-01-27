@@ -8,7 +8,7 @@ class RegisterForm(FlaskForm):
     password = PasswordField('Пароль', validators=[DataRequired()])
     password_again = PasswordField('Повторите пароль', validators=[DataRequired()])
     name = StringField('ФИО', validators=[DataRequired()])
-    about = TextAreaField("Номер телефона")
+    number = StringField("Номер телефона", validators=[DataRequired()])
     submit = SubmitField('Войти')
 
 

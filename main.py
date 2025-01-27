@@ -1,6 +1,5 @@
 from flask import Flask, render_template, redirect, request, abort, send_file
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
-from io import BytesIO
 
 from forms.inventory import InventoryForm
 from forms.user import RegisterForm, LoginForm
@@ -69,7 +68,7 @@ def add_news():
         inventory = Inventory()
         inventory.title = form.title.data
         inventory.content = form.content.data
-        inventory.is_rented = form.is_private.data
+        inventory.is_rented = form.is_rented.data
         inventory.image = file.filename
         current_user.inventory.append(inventory)
         db_sess.merge(current_user)
@@ -101,7 +100,7 @@ def edit_news(id):
         if news:
             form.title.data = news.title
             form.content.data = news.content
-            form.is_private.data = news.is_rented
+            form.is_rented.data = news.is_rented
         else:
             abort(404)
     if form.validate_on_submit():
@@ -110,7 +109,7 @@ def edit_news(id):
         if news:
             news.title = form.title.data
             news.content = form.content.data
-            news.is_rented = form.is_private.data
+            news.is_rented = form.is_rented.data
             db_sess.commit()
             return redirect('/index')
         else:
@@ -143,7 +142,7 @@ def reqister():
         user = User(
             name=form.name.data,
             email=form.email.data,
-            about=form.about.data
+            number=form.number.data
         )
         user.admin = 'False'
         user.set_password(form.password.data)
