@@ -16,7 +16,7 @@ class Inventory(SqlAlchemyBase):
     is_rented = sqlalchemy.Column(sqlalchemy.Boolean, default=False)
     image = sqlalchemy.Column(sqlalchemy.String, nullable=True)
 
-    user_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("users.id"))
+    user_id = sqlalchemy.Column(sqlalchemy.Integer, default=0)
     user = orm.relationship('User')
 
     categories = orm.relationship("Category", secondary="association", backref="inventory")

@@ -4,6 +4,7 @@ from flask_login import LoginManager, login_user, login_required, logout_user, c
 from forms.inventory import InventoryForm
 from forms.user import RegisterForm, LoginForm
 from data.inventory import Inventory
+from data.arend import Arend
 from data.users import User
 from data import db_session
 
@@ -28,12 +29,28 @@ def more_detailed(object_id):
 @app.route('/inventory/<object_id>/more_detailed/arend')
 @login_required
 def arend(object_id):
+    db_sess = db_session.create_session()
+    arend = Arend()
+    arend.object_id = object_id
+    arend.user_id = current_user.id
+    arend.status = 'арендовать'
+    current_user.arend.append(arend)
+    db_sess.merge(current_user)
+    db_sess.commit()
     return redirect('/index')
 
 
 @app.route('/inventory/<object_id>/more_detailed/end')
 @login_required
 def end(object_id):
+    db_sess = db_session.create_session()
+    arend = Arend()
+    arend.object_id = object_id
+    arend.user_id = current_user.id
+    arend.status = 'сдать'
+    current_user.arend.append(arend)
+    db_sess.merge(current_user)
+    db_sess.commit()
     return redirect('/index')
 
 
@@ -41,9 +58,38 @@ def end(object_id):
 @login_required
 def req():
     db_sess = db_session.create_session()
-    object = db_sess.query(User).all()
-    return render_template('req.html', o=object)
+    arend = db_sess.query(Arend).all()
+    return render_template('req.html', arend=arend)
 
+
+@app.route("/accept/<object_id>/<user_id>")
+@login_required
+def accept(object_id, user_id):
+    """db_sess = db_session.create_session()
+    data = db_sess.query(Arend).filter(Arend.object_id == object_id, Arend.user_id == user_id).first()
+    inventory = Inventory()
+    if data:
+        inventory.is_rented = 1
+        inventory.user_id = user_id
+        db_sess.delete(data)
+        db_sess.commit()
+    else:
+        abort(404)
+    return redirect('/index')"""
+    pass
+
+
+@app.route("/reject/<object_id>/<user_id>")
+@login_required
+def reject(object_id, user_id):
+    db_sess = db_session.create_session()
+    data = db_sess.query(Arend).filter(Arend.object_id == object_id, Arend.user_id == user_id).first()
+    if data:
+        db_sess.delete(data)
+        db_sess.commit()
+    else:
+        abort(404)
+    return redirect('/index')
 
 @app.route('/logout')
 @login_required
@@ -122,9 +168,11 @@ def index():
     db_sess = db_session.create_session()
     if current_user.is_authenticated:
         arend = db_sess.query(Inventory).filter(Inventory.user_id == current_user.id).all()
-        news = db_sess.query(Inventory).filter(Inventory.is_rented == False).all()
+        arended_id = [elem.object_id for elem in db_sess.query(Arend).filter().all()]
+        news = db_sess.query(Inventory).filter(Inventory.is_rented == False, Inventory.id not in arended_id).all()
     else:
-        news = db_sess.query(Inventory).filter(Inventory.is_rented == False)
+        arended_id = [elem.object_id for elem in db_sess.query(Arend).filter().all()]
+        news = db_sess.query(Inventory).filter(Inventory.is_rented == False and Inventory.id not in arended_id).all()
     return render_template("index.html", inventory=news, arend=arend)
 
 

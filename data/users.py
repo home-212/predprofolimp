@@ -20,6 +20,8 @@ class User(SqlAlchemyBase, UserMixin):
 
     inventory = orm.relationship("Inventory", back_populates='user')
 
+    arend = orm.relationship("Arend", back_populates='user')
+
     def __repr__(self):
         return f'<User> {self.id} {self.name} {self.email}'
 
