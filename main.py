@@ -192,7 +192,7 @@ def reqister():
             email=form.email.data,
             number=form.number.data
         )
-        user.admin = 'False'
+        user.admin = False
         user.set_password(form.password.data)
         db_sess.add(user)
         db_sess.commit()
