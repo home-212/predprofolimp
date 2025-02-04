@@ -65,18 +65,17 @@ def req():
 @app.route("/accept/<object_id>/<user_id>")
 @login_required
 def accept(object_id, user_id):
-    """db_sess = db_session.create_session()
+    db_sess = db_session.create_session()
     data = db_sess.query(Arend).filter(Arend.object_id == object_id, Arend.user_id == user_id).first()
-    inventory = Inventory()
+    news = db_sess.query(Inventory).filter(Inventory.id == object_id).first()
     if data:
-        inventory.is_rented = 1
-        inventory.user_id = user_id
+        news.is_rented = 1
+        news.arend_id = user_id
         db_sess.delete(data)
         db_sess.commit()
     else:
         abort(404)
-    return redirect('/index')"""
-    pass
+    return redirect('/index')
 
 
 @app.route("/reject/<object_id>/<user_id>")
@@ -123,7 +122,7 @@ def add_news():
 
 @app.route('/news_delete/<int:id>', methods=['GET', 'POST'])
 @login_required
-def news_delete(id):
+def object_delete(id):
     db_sess = db_session.create_session()
     news = db_sess.query(Inventory).filter(Inventory.id == id, Inventory.user == current_user).first()
     if news:
@@ -136,7 +135,7 @@ def news_delete(id):
 
 @app.route('/inventory/<int:id>', methods=['GET', 'POST'])
 @login_required
-def edit_news(id):
+def edit_object(id):
     form = InventoryForm()
     if request.method == "GET":
         db_sess = db_session.create_session()
@@ -213,4 +212,3 @@ def login():
 
 if __name__ == '__main__':
     main()
-
