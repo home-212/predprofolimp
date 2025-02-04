@@ -7,6 +7,6 @@ class InventoryForm(FlaskForm):
     title = StringField('Заголовок', validators=[DataRequired()])
     content = TextAreaField("Содержание")
     is_rented = BooleanField("Личное")
-    image = StringField('Изображение')
+    arendator_id = StringField('Изображение')
     submit = SubmitField('Применить')
 

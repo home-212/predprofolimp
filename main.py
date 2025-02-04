@@ -108,14 +108,12 @@ def main():
 def add_news():
     form = InventoryForm()
     if form.validate_on_submit():
-        if request.method == 'POST':
-            file = request.files['file']
         db_sess = db_session.create_session()
         inventory = Inventory()
         inventory.title = form.title.data
         inventory.content = form.content.data
         inventory.is_rented = form.is_rented.data
-        inventory.image = file.filename
+        inventory.arendator_id = 0
         current_user.inventory.append(inventory)
         db_sess.merge(current_user)
         db_sess.commit()
@@ -192,7 +190,7 @@ def reqister():
             email=form.email.data,
             number=form.number.data
         )
-        user.admin = False
+        user.admin = 'False'
         user.set_password(form.password.data)
         db_sess.add(user)
         db_sess.commit()
