@@ -62,15 +62,34 @@ def req():
     return render_template('req.html', arend=arend)
 
 
-@app.route("/accept/<object_id>/<user_id>/")
+@app.route("/accept/<object_id>/<user_id>")
 @login_required
 def accept(object_id, user_id):
     db_sess = db_session.create_session()
     data = db_sess.query(Arend).filter(Arend.object_id == object_id, Arend.user_id == user_id).first()
     news = db_sess.query(Inventory).filter(Inventory.id == object_id).first()
     if data:
-        news.is_rented = 1
-        news.arend_id = user_id
+        if data.status == 'арендовать':
+            news.is_rented = 1
+            news.arend_id = user_id
+            db_sess.delete(data)
+            db_sess.commit()
+        else:
+            news.is_rented = 0
+            news.arend_id = 0
+            db_sess.delete(data)
+            db_sess.commit()
+    else:
+        abort(404)
+    return redirect('/index')
+
+
+def pass_object(object_id):
+    db_sess = db_session.create_session()
+    data = db_sess.query(Arend).filter(Arend.object_id == object_id).first()
+    if data:
+        data.is_rented = 0
+        data.arend_id = 0
         db_sess.delete(data)
         db_sess.commit()
     else:
