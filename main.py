@@ -62,7 +62,7 @@ def req():
     return render_template('req.html', arend=arend)
 
 
-@app.route("/accept/<object_id>/<user_id>")
+@app.route("/accept/<object_id>/<user_id>/")
 @login_required
 def accept(object_id, user_id):
     db_sess = db_session.create_session()
@@ -164,7 +164,7 @@ def edit_object(id):
 def index():
     db_sess = db_session.create_session()
     if current_user.is_authenticated:
-        arend = db_sess.query(Inventory).filter(Inventory.user_id == current_user.id).all()
+        arend = db_sess.query(Inventory).filter(Inventory.arend_id == current_user.id).all()
         arended_id = [elem.object_id for elem in db_sess.query(Arend).filter().all()]
         news = db_sess.query(Inventory).filter(Inventory.is_rented == False, Inventory.id not in arended_id).all()
     else:
@@ -212,3 +212,4 @@ def login():
 
 if __name__ == '__main__':
     main()
+
