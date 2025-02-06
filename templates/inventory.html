@@ -1,28 +1,33 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Добавление позиции</h1>
-    <form action="" method="post" enctype=multipart/form-data>
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.title.label }}<br>
-            {{ form.title(class="form-control") }}<br>
-            {% for error in form.title.errors %}
-                <p class="alert alert-danger" role="alert">
-                    {{ error }}
-                </p>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.content.label }}<br>
-            {{ form.content(class="form-control") }}<br>
-            {% for error in form.content.errors %}
-                <p content="alert alert-danger" role="alert">
-                    {{ error }}
-                </p>
-            {% endfor %}
-        </p>
-        <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
-        {{ message }}
-    </form>
+<h1>Добавление позиции</h1>
+<form action="" method="post" enctype=multipart/form-data>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.title.label }}<br>
+        {{ form.title(class="form-control") }}<br>
+        {% for error in form.title.errors %}
+    <p class="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    <p>
+        {{ form.content.label }}<br>
+        {{ form.content(class="form-control") }}<br>
+        {% for error in form.content.errors %}
+    <p content="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    <p>
+    <label for="condition">Состояние предмета</label>
+    <select name="condition" id="condition">
+        <option value="new">Новое</option>
+        <option value="normal">Нормальное</option>
+        <option value="bad">Поношенное</option>
+    </select>
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    {{ message }}
+</form>
 {% endblock %}

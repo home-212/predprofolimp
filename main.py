@@ -132,6 +132,7 @@ def add_news():
         inventory.content = form.content.data
         inventory.is_rented = form.is_rented.data
         inventory.arendator_id = 0
+        inventory.condition = form.condition.data
         current_user.inventory.append(inventory)
         db_sess.merge(current_user)
         db_sess.commit()
@@ -163,6 +164,7 @@ def edit_object(id):
             form.title.data = news.title
             form.content.data = news.content
             form.is_rented.data = news.is_rented
+            form.condition.data = news.condition
         else:
             abort(404)
     if form.validate_on_submit():
@@ -172,6 +174,7 @@ def edit_object(id):
             news.title = form.title.data
             news.content = form.content.data
             news.is_rented = form.is_rented.data
+            news.condition = form.condition.data
             db_sess.commit()
             return redirect('/index')
         else:
