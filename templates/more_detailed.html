@@ -16,6 +16,12 @@
                 {% endfor %}
             </a>
         </div>
+        <div class="m-1">
+            Состояние:
+                {% for item in n %}
+                    {{ item.condition }}
+                {% endfor %}
+        </div>
     </div>
     {% if current_user.admin != 'True' %}
     <div class="m-1 p-1 border rounded">

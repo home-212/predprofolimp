@@ -7,12 +7,13 @@
         <a href="/req" class="btn btn-secondary">Запросы</a>
     {% endif %}
 <div>
-{% if current_user.admin != 'True' %}
+{% if current_user.admin != 'True' and n != 0%}
 <h1>Ваши аренды</h1>
 <div class="row">
     {% for item in arend %}
         <div class="col-md-3 m-1 p-1 border rounded">
             <h2>{{ item.title }}</h2>
+            <h5>Состояние: {{ item.condition }}</h5>
             <div class="m-1">
                 <a href="/inventory/{{ item.id }}/more_detailed" class="btn btn-warning">Подробнее</a>
             </div>
@@ -25,6 +26,7 @@
     {% for item in inventory %}
         <div class="col-md-3 m-1 p-1 border rounded">
             <h2>{{ item.title }}</h2>
+            <h5>Состояние: {{ item.condition }}</h5>
             {% if current_user.admin == 'True' %}
                 <div class="m-1">
                     <a href="/inventory/{{ item.id }}" class="btn btn-warning">Изменить</a>

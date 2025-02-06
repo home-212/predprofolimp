@@ -172,6 +172,8 @@ def edit_object(id):
 @app.route("/index")
 def index():
     db_sess = db_session.create_session()
+    num = db_sess.query(Inventory).filter(Inventory.is_rented == True).all()
+    n = len(num)
     if current_user.is_authenticated:
         arend = db_sess.query(Inventory).filter(Inventory.arend_id == current_user.id).all()
         arended_id = [elem.object_id for elem in db_sess.query(Arend).filter().all()]
@@ -179,7 +181,7 @@ def index():
     else:
         arended_id = [elem.object_id for elem in db_sess.query(Arend).filter().all()]
         news = db_sess.query(Inventory).filter(Inventory.is_rented == False and Inventory.id not in arended_id).all()
-    return render_template("index.html", inventory=news, arend=arend)
+    return render_template("index.html", inventory=news, arend=arend, n=n)
 
 
 @app.route('/reqister', methods=['GET', 'POST'])
