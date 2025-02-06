@@ -19,12 +19,17 @@
     </div>
     {% if current_user.admin != 'True' %}
     <div class="m-1 p-1 border rounded">
+        {% for item in n %}
+        {% if item.is_rented == False %}
         <div class="m-1 p-1">
             <a href="/inventory/{{id}}/more_detailed/arend" class="btn btn-success">Арендовать</a>
         </div>
+        {% else %}
         <div class="m-1 p-1">
             <a href="/inventory/{{id}}/more_detailed/end" class="btn btn-primary">Сдать</a>
         </div>
+        {% endif %}
+        {% endfor %}
     </div>
     {% endif %}
 </div>
