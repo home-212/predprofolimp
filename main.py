@@ -84,19 +84,6 @@ def accept(object_id, user_id):
     return redirect('/index')
 
 
-def pass_object(object_id):
-    db_sess = db_session.create_session()
-    data = db_sess.query(Arend).filter(Arend.object_id == object_id).first()
-    if data:
-        data.is_rented = 0
-        data.arend_id = 0
-        db_sess.delete(data)
-        db_sess.commit()
-    else:
-        abort(404)
-    return redirect('/index')
-
-
 @app.route("/reject/<object_id>/<user_id>")
 @login_required
 def reject(object_id, user_id):
