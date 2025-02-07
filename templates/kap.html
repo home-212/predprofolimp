@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+{% if current_user.admin == 'True' %}
+{% for key, value in p.items() %}
+        <div class="col-md-3 m-1 p-1 border rounded">
+            <div class="m-1">
+                <a>Название: {{key}}</a>
+            </div>
+            <div class="m-1">
+                <a>Арендатор: {{value['name']}}</a>
+            </div>
+            <div class="m-1">
+                <a>Номер телефона: {{value['number']}}</a>
+            </div>
+        </div>
+{% endfor %}
+{% endif %}
+</div>
+{% endblock %}
