@@ -19,6 +19,28 @@ def load_user(user_id):
     return db_sess.get(User, user_id)   # !!!!
 
 
+@app.route('/ex')
+@login_required
+def ex():
+    db_sess = db_session.create_session()
+    inv = db_sess.query(Inventory).all()
+    sl = {}
+    for el in inv:
+        p = f'{el.title}'
+        if p not in sl.keys():
+            sl[p] = 1
+        else:
+            sl[p] += 1
+    sp = ['Названиеж;Кол-во']
+    for key, value in sl.items():
+        word = f'{key};{value}'
+        sp.append(word)
+    with open('static/media/1.csv', 'w', encoding='utf-8-sig') as f:
+        for i in range(len(sp)):
+            f.writelines([sp[i], '\n'])
+    return redirect('/static/media/1.csv')
+
+
 @app.route('/inventory/<object_id>/more_detailed')
 @login_required
 def more_detailed(object_id):
