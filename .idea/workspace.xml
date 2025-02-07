@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9d17bf33-013c-4296-8bd5-396c909ae308" name="Changes" comment="exel">
+      <change beforePath="$PROJECT_DIR$/db/blogs.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/blogs.db" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;home-212&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/home-212/predprofolimp&quot;,
+    &quot;accountId&quot;: &quot;1e060ad2-a806-4ebb-8f51-2353ae6765d9&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2rskuNIytvoRtmcfrayF2QmjZQG" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\grish\PycharmProjects\predprofolimp\db" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pythonProject4" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-fb887030ada0-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.21565.199" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9d17bf33-013c-4296-8bd5-396c909ae308" name="Changes" comment="" />
+      <created>1737355391989</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1737355391989</updated>
+    </task>
+    <task id="LOCAL-00001" summary="main починил">
+      <option name="closed" value="true" />
+      <created>1737449457419</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1737449457419</updated>
+    </task>
+    <task id="LOCAL-00002" summary="обавил кнопки аренды">
+      <option name="closed" value="true" />
+      <created>1737453482811</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1737453482811</updated>
+    </task>
+    <task id="LOCAL-00003" summary="добавил страницу для админов с запросами">
+      <option name="closed" value="true" />
+      <created>1737454285786</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1737454285786</updated>
+    </task>
+    <task id="LOCAL-00004" summary="lf">
+      <option name="closed" value="true" />
+      <created>1737629696298</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1737629696298</updated>
+    </task>
+    <task id="LOCAL-00005" summary="требуется доработка req и всех выходищих из него функций">
+      <option name="closed" value="true" />
+      <created>1737633357242</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1737633357242</updated>
+    </task>
+    <task id="LOCAL-00006" summary="чистый лист">
+      <option name="closed" value="true" />
+      <created>1737960424841</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1737960424841</updated>
+    </task>
+    <task id="LOCAL-00007" summary="с чистого листа, всё начать с нуля">
+      <option name="closed" value="true" />
+      <created>1737960561011</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1737960561011</updated>
+    </task>
+    <task id="LOCAL-00008" summary="да">
+      <option name="closed" value="true" />
+      <created>1738658960314</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1738658960314</updated>
+    </task>
+    <task id="LOCAL-00009" summary="да">
+      <option name="closed" value="true" />
+      <created>1738658970944</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1738658970944</updated>
+    </task>
+    <task id="LOCAL-00010" summary="доработать запросы">
+      <option name="closed" value="true" />
+      <created>1738663109919</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1738663109919</updated>
+    </task>
+    <task id="LOCAL-00011" summary="промежуточный этап ппроекта завершён, код работает. Отправляется на дополнение из ТЗ">
+      <option name="closed" value="true" />
+      <created>1738663797911</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1738663797911</updated>
+    </task>
+    <task id="LOCAL-00012" summary="предпоследний комит">
+      <option name="closed" value="true" />
+      <created>1738839126332</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1738839126332</updated>
+    </task>
+    <task id="LOCAL-00013" summary="предпоследний комит">
+      <option name="closed" value="true" />
+      <created>1738839173692</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1738839173692</updated>
+    </task>
+    <task id="LOCAL-00014" summary="шутка,это предоследний комит">
+      <option name="closed" value="true" />
+      <created>1738839919310</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1738839919310</updated>
+    </task>
+    <task id="LOCAL-00015" summary="финальный комит">
+      <option name="closed" value="true" />
+      <created>1738843341399</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1738843341399</updated>
+    </task>
+    <task id="LOCAL-00016" summary="уже не уверн что финальный комит">
+      <option name="closed" value="true" />
+      <created>1738908841112</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1738908841112</updated>
+    </task>
+    <task id="LOCAL-00017" summary="и на счет этого тоже уже не уверн что финальный комит">
+      <option name="closed" value="true" />
+      <created>1738910308427</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1738910308427</updated>
+    </task>
+    <task id="LOCAL-00018" summary="я в отчайности">
+      <option name="closed" value="true" />
+      <created>1738913966544</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1738913966544</updated>
+    </task>
+    <task id="LOCAL-00019" summary="exel">
+      <option name="closed" value="true" />
+      <created>1738917987873</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1738917987873</updated>
+    </task>
+    <task id="LOCAL-00020" summary="exel">
+      <option name="closed" value="true" />
+      <created>1738918660577</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1738918660577</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="main починил" />
+    <MESSAGE value="обавил кнопки аренды" />
+    <MESSAGE value="добавил страницу для админов с запросами" />
+    <MESSAGE value="lf" />
+    <MESSAGE value="требуется доработка req и всех выходищих из него функций" />
+    <MESSAGE value="чистый лист" />
+    <MESSAGE value="с чистого листа, всё начать с нуля" />
+    <MESSAGE value="да" />
+    <MESSAGE value="доработать запросы" />
+    <MESSAGE value="промежуточный этап ппроекта завершён, код работает. Отправляется на дополнение из ТЗ" />
+    <MESSAGE value="предпоследний комит" />
+    <MESSAGE value="шутка,это предоследний комит" />
+    <MESSAGE value="финальный комит" />
+    <MESSAGE value="уже не уверн что финальный комит" />
+    <MESSAGE value="и на счет этого тоже уже не уверн что финальный комит" />
+    <MESSAGE value="я в отчайности" />
+    <MESSAGE value="exel" />
+    <option name="LAST_COMMIT_MESSAGE" value="exel" />
+  </component>
+</project>
