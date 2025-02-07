@@ -54,6 +54,22 @@ def end(object_id):
     return redirect('/index')
 
 
+@app.route('/kap')
+@login_required
+def kap():
+    db_sess = db_session.create_session()
+    data = {}
+    k = db_sess.query(Inventory).filter(Inventory.is_rented == True).all()
+    for el in k:
+        p = db_sess.query(User).filter(User.id == el.arend_id).all()
+        data[el.title] = {
+            'name': p[0].name,
+            'number': p[0].number
+        }
+    print(data)
+    return render_template('kap.html', p=data)
+
+
 @app.route('/req')
 @login_required
 def req():
@@ -67,16 +83,16 @@ def req():
 def accept(object_id, user_id):
     db_sess = db_session.create_session()
     data = db_sess.query(Arend).filter(Arend.object_id == object_id, Arend.user_id == user_id).first()
-    news = db_sess.query(Inventory).filter(Inventory.id == object_id).first()
+    n = db_sess.query(Inventory).filter(Inventory.id == object_id).first()
     if data:
         if data.status == 'арендовать':
-            news.is_rented = 1
-            news.arend_id = user_id
+            n.is_rented = 1
+            n.arend_id = user_id
             db_sess.delete(data)
             db_sess.commit()
         else:
-            news.is_rented = 0
-            news.arend_id = 0
+            n.is_rented = 0
+            n.arend_id = 0
             db_sess.delete(data)
             db_sess.commit()
     else:
