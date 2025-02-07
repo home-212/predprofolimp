@@ -10,6 +10,9 @@
 <div>
 {% if current_user.admin != 'True' and n != 0%}
 <h1>Ваши аренды</h1>
+{% if current_user.admin != 'True' %}
+    <a href="/stat" class="btn btn-secondary">Cатус заявки</a>
+{% endif %}
 <div class="row">
     {% for item in arend %}
         <div class="col-md-3 m-1 p-1 border rounded">

@@ -1,20 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="row">
 {% if current_user.admin == 'True' %}
 {% for item in arend %}
-<div class="row">
-        <div class=" m-1 p-1 border rounded">
+        <div class="col-md-3 m-1 p-1 border rounded">
             <div class="m-1">
-                <a>{{item.user.name}}</a>
-                <a>{{item.user.number}}</a>
-                <a>{{item.inventory.title}}</a>
-                <a>{{item.status}}</a>
+                <a>Имя: {{item.user.name}}</a>
+            </div>
+            <div class="m-1">
+                <a>Номер телефона: {{item.user.number}}</a>
+            </div>
+            <div class="m-1">
+                <a>Название: {{item.inventory.title}}</a>
+            </div>
+            <div class="m-1">
+                <a>Статус: {{item.status}}</a>
+            </div>
+            <div class="m-1">
                 <a href="/accept/{{item.object_id}}/{{item.user_id}}" class="btn btn-success">Одобрить</a>
                 <a href="/reject/{{item.object_id}}/{{item.user_id}}" class="btn btn-danger">Отклонить</a>
             </div>
         </div>
-</div>
 {% endfor %}
 {% endif %}
+</div>
 {% endblock %}

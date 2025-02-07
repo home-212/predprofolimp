@@ -18,12 +18,21 @@ def load_user(user_id):
     db_sess = db_session.create_session()
     return db_sess.get(User, user_id)   # !!!!
 
+
 @app.route('/inventory/<object_id>/more_detailed')
 @login_required
 def more_detailed(object_id):
     db_sess = db_session.create_session()
     user = db_sess.query(Inventory).filter(Inventory.id == object_id).all()
     return render_template('more_detailed.html', n=user, id=object_id)
+
+
+@app.route('/stat')
+@login_required
+def stat():
+    db_sess = db_session.create_session()
+    arend = db_sess.query(Arend).filter(Arend.user_id == current_user.id).all()
+    return render_template('stat.html', arend=arend)
 
 
 @app.route('/inventory/<object_id>/more_detailed/arend')
@@ -66,7 +75,6 @@ def kap():
             'name': p[0].name,
             'number': p[0].number
         }
-    print(data)
     return render_template('kap.html', p=data)
 
 
@@ -193,10 +201,13 @@ def index():
     if current_user.is_authenticated:
         arend = db_sess.query(Inventory).filter(Inventory.arend_id == current_user.id).all()
         arended_id = [elem.object_id for elem in db_sess.query(Arend).filter().all()]
-        news = db_sess.query(Inventory).filter(Inventory.is_rented == False, Inventory.id not in arended_id).all()
+        news = db_sess.query(Inventory).filter(Inventory.is_rented == False).all()
+        news = [x for x in news if x.id not in arended_id]
+        arend = [x for x in arend if x.id not in arended_id]
     else:
         arended_id = [elem.object_id for elem in db_sess.query(Arend).filter().all()]
         news = db_sess.query(Inventory).filter(Inventory.is_rented == False and Inventory.id not in arended_id).all()
+        news = [x for x in news if x.id not in arended_id]
     return render_template("index.html", inventory=news, arend=arend, n=n)
 
 
