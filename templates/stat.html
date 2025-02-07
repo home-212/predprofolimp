@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+{% if current_user.admin != 'True' %}
+{% for item in arend %}
+        <div class="col-md-4 m-1 p-1 border rounded">
+            <div class="m-1">
+                <h5>Название: {{item.inventory.title}}</h5>
+            </div>
+            <div class="m-1">
+                <h5>Статус: рассматривается</h5>
+            </div>
+            <div class="m-1">
+                <a href="/reject/{{item.object_id}}/{{item.user_id}}" class="btn btn-danger">Отменить</a>
+            </div>
+        </div>
+{% endfor %}
+{% endif %}
+</div>
+{% endblock %}
+
