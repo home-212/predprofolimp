@@ -31,7 +31,7 @@ def ex():
             sl[p] = 1
         else:
             sl[p] += 1
-    sp = ['Названиеж;Кол-во']
+    sp = ['Название;Кол-во']
     for key, value in sl.items():
         word = f'{key};{value}'
         sp.append(word)
@@ -156,7 +156,7 @@ def main():
 
 @app.route('/inventory', methods=['GET', 'POST'])
 @login_required
-def add_news():
+def add_object():
     form = InventoryForm()
     if form.validate_on_submit():
         db_sess = db_session.create_session()
@@ -177,9 +177,9 @@ def add_news():
 @login_required
 def object_delete(id):
     db_sess = db_session.create_session()
-    news = db_sess.query(Inventory).filter(Inventory.id == id, Inventory.user == current_user).first()
-    if news:
-        db_sess.delete(news)
+    ob = db_sess.query(Inventory).filter(Inventory.id == id, Inventory.user == current_user).first()
+    if ob:
+        db_sess.delete(ob)
         db_sess.commit()
     else:
         abort(404)
