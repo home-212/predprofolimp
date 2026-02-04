@@ -8,7 +8,7 @@ __factory = None
 
 
 def global_init(db_file):
-    global __factory
+    global __factory # factor
 
     if __factory:
         return

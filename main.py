@@ -259,7 +259,7 @@ def reqister():
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
+    form = LoginForm() # login
     if form.validate_on_submit():
         db_sess = db_session.create_session()
         user = db_sess.query(User).filter(User.email == form.email.data).first()

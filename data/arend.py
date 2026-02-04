@@ -4,7 +4,7 @@ from .db_session import SqlAlchemyBase
 
 
 class Arend(SqlAlchemyBase):
-    __tablename__ = 'arend'
+    __tablename__ = 'arend'# arend
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
     status = sqlalchemy.Column(sqlalchemy.String, nullable=True)
 

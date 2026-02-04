@@ -7,7 +7,7 @@ from .db_session import SqlAlchemyBase
 
 
 class Inventory(SqlAlchemyBase):
-    __tablename__ = 'inventory'
+    __tablename__ = 'inventory'# inv
 
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
     title = sqlalchemy.Column(sqlalchemy.String, nullable=True)
