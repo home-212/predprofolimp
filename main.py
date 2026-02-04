@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, abort, send_file
+from flask import Flask, render_template, redirect, request, abort
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 
 from forms.inventory import InventoryForm
